@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f3e0f1;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #5d4037;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===== LAYOUT DESKTOP (padrão) ===== */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 10%;
+    z-index: 5;
+    position: relative;
+    gap: 40px;
+}
+
+.content-left {
+    flex: 1;
+}
+
+.texts p {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.6rem !important;
+}
+
+.signature {
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.counter-section {
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
+#timer {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.content-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* ===== FLOR E VASO ===== */
+.tree-container {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tree-heart { 
+    font-size: 180px; 
+    line-height: 1;
+    margin-bottom: -10px; /* ajuste esse valor até encaixar */
+}
+
+.pot {
+    width: 80px;
+    height: 90px;
+    background-color: #d6643a;
+    border-radius: 5px 5px 30px 30px;
+    margin-top: 11px;
+    position: relative;
+    border: 3px solid #d6643a;
+}
+
+.pot::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -5px;
+    width: 90px;
+    height: 15px;
+    background-color: #d14f23;
+    border-radius: 5px;
+}
+
+/* ===== PÉTALAS ===== */
+#petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.petal {
+    position: absolute;
+    background-color: #e93427;
+    border-radius: 150% 0 150% 0;
+    opacity: 0.8;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0%   { transform: translateY(-10vh) rotate(0deg) translateX(0); }
+    100% { transform: translateY(110vh) rotate(720deg) translateX(50px); }
+}
+
+/* ===== RESPONSIVO — CELULAR EM PÉ ===== */
+@media (max-width: 600px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .main-container {
+        flex-direction: column;          /* empilha: texto em cima, flor embaixo */
+        align-items: center;
+        justify-content: flex-start;
+        padding: 30px 6% 40px;
+        min-height: 100vh;
+        gap: 20px;
+    }
+
+    .content-left {
+        width: 100%;
+        text-align: center;
+    }
+
+    .texts p {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        line-height: 1.55;
+    }
+
+    .title {
+        font-size: 1.25rem !important;
+    }
+
+    .counter-section {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .counter-section p {
+        font-size: 1rem;
+    }
+
+    #timer {
+        font-size: 1rem;
+        margin-top: 8px;
+        word-break: break-word;   /* evita overflow no timer */
+    }
+
+    .content-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tree-heart {
+        font-size: 130px;          /* flor um pouco menor no celular */
+    }
+
+    .pot {
+        width: 65px;
+        height: 75px;
+    }
+
+    .pot::before {
+        width: 75px;
+    }
+}
+
+/* ===== RESPONSIVO — TABLETS (601-900px) ===== */
+@media (min-width: 601px) and (max-width: 900px) {
+    .main-container {
+        padding: 30px 6%;
+        gap: 20px;
+    }
+
+    .texts p {
+        font-size: 1.2rem;
+    }
+
+    .title {
+        font-size: 1.4rem !important;
+    }
+
+    #timer {
+        font-size: 1.1rem;
+    }
+
+    .tree-heart {
+        font-size: 150px;
+    }
+}
